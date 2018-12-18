@@ -1,0 +1,86 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Angular 6 Template-Driven Form Validation</h3>
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName"
+                               #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }"
+                               required/>
+                        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                            <div *ngIf="firstName.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password"
+                               #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                               required minlength="6"/>
+                        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" name="confirm_password"
+                               [(ngModel)]="model.confirm_password"
+                               #confirm_password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                               required minlength="6"/>
+                        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                            <div *ngIf="confirm_password.errors.required">Confirm Password is required</div>
+                            <div *ngIf="confirm_password.errors.mustMatch">Passwords must match</div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input type="text" class="form-control" name="country" [(ngModel)]="model.country"
+                               #country="ngModel" [ngClass]="{ 'is-invalid': f.submitted && country.invalid }"
+                               required/>
+                        <div *ngIf="f.submitted && country.invalid" class="invalid-feedback">
+                            <div *ngIf="country.errors.required">First Country is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" class="form-control" name="age" [(ngModel)]="model.age"
+                               #age="ngModel" [ngClass]="{ 'is-invalid': f.submitted && age.invalid }"
+                               required/>
+                        <!--<mat-radio-group>-->
+                            <!--<mat-radio-button value="1">Option 1</mat-radio-button>-->
+                            <!--<mat-radio-button value="2">Option 2</mat-radio-button>-->
+                        <!--</mat-radio-group>-->
+                        <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                            <div *ngIf="age.errors.required">Last Age is required</div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" name="lastName" [(ngModel)]="model.phone"
+                               #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
+                               required/>
+                        <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                            <div *ngIf="phone.errors.required">Last Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
